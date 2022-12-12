@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-buttons class="backbtn" routerLink="/home" routerDirection="back">
+        <ion-icon name="arrow-back-outline" style="font-size:20px ;" routerLink="/home"></ion-icon>
+      </ion-buttons>
+    </ion-buttons>
+    <div style="text-align:center">
+      My cart
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true" *ngIf="getCartDetails.length !=0">
+  <h1 class="title">Cart</h1>
+
+  <div class="cart-items">
+    <ion-card mode="ios" *ngFor="let cart of getCartDetails">
+      <ion-card-content>
+        <div class="item-img">
+          <img src="{{cart.imgurl}}" />
+        </div>
+        <div class="item-info">
+          <p>{{cart.name}} </p>
+       
+          <p>{{cart.category}}</p>
+          <p>${{cart.price * cart.qnt}}</p>
+          <div class="qty-selector">
+            <ion-button fill="clear" (click)="decQnt(cart.prodId, cart.qnt)" style="color:red;">
+              <ion-icon name="remove-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-label>{{cart.qnt}}</ion-label>
+            <ion-button fill="clear" (click)="incQnt(cart.prodId, cart.qnt)" style="color:green;">
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+        
+      </ion-card-content>
+         <div class="class" >
+        
+            <ion-icon name="trash-outline" style=" font-size: 1.5rem; color: red;" 
+              (click)="singleDelete(cart.prodId)"></ion-icon>
+              
+          </div>
+    </ion-card>
+    
+    <div>
+      <ion-button color="danger" size="small" style="float: right;" (click)=" removeall()">Remove all items</ion-button>
+    </div>
+  </div>
+  <hr>
+  <!-- <div class="cart-total">
+    <ion-item lines="none">
+      <ion-label>Total - ${{total}}</ion-label>
+
+    </ion-item>
+  </div> -->
+  <br><br>
+  <div class="cart-total">
+    <ion-item lines="none">
+      <ion-label style="font-size: 20px;"> Total:</ion-label>
+      <ion-label slot="end" class="ion-text-right" style="font-size: 20px;">${{total}}</ion-label>
+    </ion-item>
+  </div>
+</ion-content>
+
+<ion-footer translucent="true" class="ion-no-border" mode="md">
+  <ion-toolbar color="translucent">
+    <ion-button expand="block" class="main-button" routerLink="/payment" routerDirection="forward">Proceed to Pay </ion-button>
+  </ion-toolbar>
+</ion-footer>
+
+<ion-content *ngIf="getCartDetails.length ==0" class="noitem">
+  <div>
+    <img  src="assets/empty.svg" />
+    <h1>Your Cart is Empty</h1>
+    <ion-button routerLink="/home">Show now</ion-button>
+  </div>
+</ion-content>

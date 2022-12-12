@@ -1,0 +1,34 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>DialogBox</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+</ion-content> -->
+<ion-header>
+  <ion-toolbar> 
+    <ion-icon name="close-outline" (click)="onNoClick()" slot="end" style="color: red; font-size: 1.4rem;"></ion-icon>
+    <!-- <ion-button mat-button (click)="onNoClick()" slot="end">❌</ion-button> -->
+  </ion-toolbar>
+</ion-header> 
+
+<ion-content>
+   <h2 class="title">Bigger Image</h2>
+   <ion-row class="favorite-items">
+    <ion-col >
+      <img src="{{data.imgurl}}" style="height:100%; width:100%">
+      <!-- <ion-img src="{{ data.imgurl }}" style="height: 100%; width:100%;"></ion-img> -->
+      <!-- <p><strong>Price:</strong> ${{data.price}}</p> -->
+      <!-- <h6 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{ data.name }}</h6>
+      <h6 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{ data.description }}
+      </h6>
+      <h6 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{ data.category }}
+      </h6> -->
+    </ion-col>
+  </ion-row>  
+   <!-- <ion-img src="assets/nmobile.png" alt="The Wisconsin State Capitol building in Madison, WI at night">{{ data.image }}</ion-img>
+  <p>{{ data.description }}</p>
+  <ion-button>Add to Cart</ion-button>  -->
+</ion-content>

@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <div slot="start" style="padding: 0px 10px;">
+      <img src="assets/logo.svg" alt="" srcset="" style="width: 30px;">
+    </div>
+    <ion-searchbar mode="ios" style="padding: 16px 0px; color:white;" color="info"></ion-searchbar>
+    <i style="font-size: 30px; margin-top: 10px;" class="fas fa-cart-plus" slot="end" routerLink="/cart"></i>
+    <div style="font-size:20px ;" class="badge bg-danger" slot="end"> {{cartItem}}</div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-justify-content-between ion-padding-vertical">
+      <ion-col size="4">
+        <div class="font-bold">
+          Flash Sale
+        </div>
+      </ion-col>
+      <ion-col size="6" class="ion-text-right">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col *ngFor='let prod of products'>
+        <ion-card class="ion-no-margin">
+          <img src="{{prod.imgurl}}" style="height:200px; width:200px" (click)="openDialog(prod)">
+          <ion-card-header>
+            <ion-card-title>{{prod.name}}</ion-card-title>
+            <ion-card-subtitle >{{ prod.category}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <!-- <div class="ion-color-dark">{{ product.price | currency: 'USD' }}</div> -->
+            <div class="content">
+              <h4 style="color:blue; font-size:20px; margin-top: -10px;">${{prod.price}}</h4>
+              <!-- <div class="content">
+                <button type="button"  (click)="inc(prod)" style="color:green;">
+                  <ion-icon name="add-circle-outline"></ion-icon>
+                </button>
+                <span>{{prod.qnt}}</span>
+                <button type="button"  (click)="dec(prod)" style="color:red ;">
+                  <ion-icon name="remove-circle-outline"></ion-icon>
+                </button>
+              </div> -->
+              <!-- <div class="qty-selector">
+                <ion-button fill="clear" (click)="dec(prod)" style="color:red;">
+                  <ion-icon name="remove-circle-outline"></ion-icon>
+                </ion-button>
+                <ion-label style="margin-top: 5px;">{{prod.qnt}}</ion-label>
+                <ion-button fill="clear" (click)="inc(prod)" style="color:green;">
+                  <ion-icon name="add-circle-outline"></ion-icon>
+                </ion-button>
+              </div> -->
+            </div> 
+            <div>
+              <ion-button expand="full" color="primary" size="small" (click)="addCart(prod)">
+                Add to Cart
+              </ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
